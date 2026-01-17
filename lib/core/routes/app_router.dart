@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../presentation/screens/auth/login_screen.dart';
+import '../../presentation/screens/auth/register_screen.dart';
 import '../../presentation/screens/onboarding/onboarding_screen.dart';
 import '../../presentation/screens/home/home_screen.dart';
 import '../../presentation/screens/tests/reaction_time/reaction_time_screen.dart';
@@ -12,6 +14,8 @@ import '../../presentation/screens/profile/profile_screen.dart';
 
 /// Application routing configuration
 class AppRouter {
+  static const String login = '/login';
+  static const String register = '/register';
   static const String onboarding = '/onboarding';
   static const String home = '/';
   static const String reactionTime = '/tests/reaction-time';
@@ -23,8 +27,16 @@ class AppRouter {
   static const String profile = '/profile';
 
   static final GoRouter router = GoRouter(
-    initialLocation: home,
+    initialLocation: login,
     routes: [
+      GoRoute(
+        path: login,
+        builder: (context, state) => const LoginScreen(),
+      ),
+      GoRoute(
+        path: register,
+        builder: (context, state) => const RegisterScreen(),
+      ),
       GoRoute(
         path: onboarding,
         builder: (context, state) => const OnboardingScreen(),
@@ -69,3 +81,4 @@ class AppRouter {
     ),
   );
 }
+
